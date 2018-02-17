@@ -1,0 +1,24 @@
+chapitre_index:
+    path:     /
+    defaults: { _controller: "ChapitreBundle:Chapitre:index" }
+    methods:  GET
+
+chapitre_show:
+    path:     /{id}/show
+    defaults: { _controller: "ChapitreBundle:Chapitre:show" }
+    methods:  GET
+
+chapitre_new:
+    path:     /new
+    defaults: { _controller: "ChapitreBundle:Chapitre:new" }
+    methods:  [GET, POST]
+
+chapitre_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ChapitreBundle:Chapitre:edit" }
+    methods:  [GET, POST]
+
+chapitre_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ChapitreBundle:Chapitre:delete" }
+    methods:  DELETE

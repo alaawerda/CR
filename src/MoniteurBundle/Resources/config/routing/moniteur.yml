@@ -1,0 +1,24 @@
+moniteur_index:
+    path:     /
+    defaults: { _controller: "MoniteurBundle:Moniteur:index" }
+    methods:  GET
+
+moniteur_show:
+    path:     /{idmoniteur}/show
+    defaults: { _controller: "MoniteurBundle:Moniteur:show" }
+    methods:  GET
+
+moniteur_new:
+    path:     /new
+    defaults: { _controller: "MoniteurBundle:Moniteur:new" }
+    methods:  [GET, POST]
+
+moniteur_edit:
+    path:     /{idmoniteur}/edit
+    defaults: { _controller: "MoniteurBundle:Moniteur:edit" }
+    methods:  [GET, POST]
+
+moniteur_delete:
+    path:     /{idmoniteur}/delete
+    defaults: { _controller: "MoniteurBundle:Moniteur:delete" }
+    methods:  DELETE

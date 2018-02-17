@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Moniteurs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Cin</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Disponiblite</th>
+                <th>Contact</th>
+                <th>Idmoniteur</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for moniteur in moniteurs %}
+            <tr>
+                <td><a href="{{ path('moniteur_show', { 'idmoniteur': moniteur.idmoniteur }) }}">{{ moniteur.cin }}</a></td>
+                <td>{{ moniteur.nom }}</td>
+                <td>{{ moniteur.prenom }}</td>
+                <td>{{ moniteur.disponiblite }}</td>
+                <td>{{ moniteur.contact }}</td>
+                <td>{{ moniteur.idmoniteur }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('moniteur_show', { 'idmoniteur': moniteur.idmoniteur }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('moniteur_edit', { 'idmoniteur': moniteur.idmoniteur }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('moniteur_new') }}">Create a new moniteur</a>
+        </li>
+    </ul>
+{% endblock %}

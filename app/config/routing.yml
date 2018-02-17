@@ -1,0 +1,51 @@
+usertest:
+    resource: "@UsertestBundle/Resources/config/routing.yml"
+    prefix:   /
+
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+typepermis:
+    resource: "@TypepermisBundle/Resources/config/routing.yml"
+    prefix:   /
+
+test:
+    resource: "@TestBundle/Resources/config/routing.yml"
+    prefix:   /
+
+reponse:
+    resource: "@ReponseBundle/Resources/config/routing.yml"
+    prefix:   /
+
+rdv:
+    resource: "@RdvBundle/Resources/config/routing.yml"
+    prefix:   /
+
+question:
+    resource: "@QuestionBundle/Resources/config/routing.yml"
+    prefix:   /
+
+moniteur:
+    resource: "@MoniteurBundle/Resources/config/routing.yml"
+    prefix:   /
+
+examen:
+    resource: "@ExamenBundle/Resources/config/routing.yml"
+    prefix:   /
+
+detail:
+    resource: "@DetailBundle/Resources/config/routing.yml"
+    prefix:   /
+
+cours:
+    resource: "@CoursBundle/Resources/config/routing.yml"
+    prefix:   /
+
+chapitre:
+    resource: "@ChapitreBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation

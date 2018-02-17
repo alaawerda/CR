@@ -1,0 +1,7 @@
+cours_cours:
+    resource: "@CoursBundle/Resources/config/routing/cours.yml"
+    prefix:   /cours
+
+cours_homepage:
+    path:     /
+    defaults: { _controller: CoursBundle:Default:index }

@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Moniteur</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Cin</th>
+                <td>{{ moniteur.cin }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ moniteur.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ moniteur.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Disponiblite</th>
+                <td>{{ moniteur.disponiblite }}</td>
+            </tr>
+            <tr>
+                <th>Contact</th>
+                <td>{{ moniteur.contact }}</td>
+            </tr>
+            <tr>
+                <th>Idmoniteur</th>
+                <td>{{ moniteur.idmoniteur }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('moniteur_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('moniteur_edit', { 'idmoniteur': moniteur.idmoniteur }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

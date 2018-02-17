@@ -1,0 +1,7 @@
+chapitre_chapitre:
+    resource: "@ChapitreBundle/Resources/config/routing/chapitre.yml"
+    prefix:   /chapitre
+
+chapitre_homepage:
+    path:     /
+    defaults: { _controller: ChapitreBundle:Default:index }

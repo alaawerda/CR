@@ -1,0 +1,3 @@
+typepermis_homepage:
+    path:     /
+    defaults: { _controller: TypepermisBundle:Default:index }

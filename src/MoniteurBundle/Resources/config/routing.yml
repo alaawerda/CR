@@ -1,0 +1,7 @@
+moniteur_moniteur:
+    resource: "@MoniteurBundle/Resources/config/routing/moniteur.yml"
+    prefix:   /moniteur
+
+moniteur_homepage:
+    path:     /
+    defaults: { _controller: MoniteurBundle:Default:index }

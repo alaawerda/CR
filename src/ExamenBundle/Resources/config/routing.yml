@@ -1,0 +1,3 @@
+examen_homepage:
+    path:     /
+    defaults: { _controller: ExamenBundle:Default:index }
