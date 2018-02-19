@@ -1,3 +1,7 @@
+typepermis_typepermis:
+    resource: "@TypepermisBundle/Resources/config/routing/typepermis.yml"
+    prefix:   /typepermis
+
 typepermis_homepage:
     path:     /
     defaults: { _controller: TypepermisBundle:Default:index }

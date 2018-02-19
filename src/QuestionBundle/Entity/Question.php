@@ -29,6 +29,70 @@ class Question
     private $idquestion;
 
     /**
+     * @return string
+     */
+    public function getTitre()
+    {
+        return $this->titre;
+    }
+
+    /**
+     * @param string $titre
+     */
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdquestion()
+    {
+        return $this->idquestion;
+    }
+
+    /**
+     * @param int $idquestion
+     */
+    public function setIdquestion($idquestion)
+    {
+        $this->idquestion = $idquestion;
+    }
+
+    /**
+     * @return \TestBundle\Entity\Tests
+     */
+    public function getIdtest()
+    {
+        return $this->idtest;
+    }
+
+    /**
+     * @param \TestBundle\Entity\Tests $idtest
+     */
+    public function setIdtest($idtest)
+    {
+        $this->idtest = $idtest;
+    }
+
+    /**
+     * @return \ChapitreBundle\Entity\Chapitre
+     */
+    public function getIdchapitre()
+    {
+        return $this->idchapitre;
+    }
+
+    /**
+     * @param \ChapitreBundle\Entity\Chapitre $idchapitre
+     */
+    public function setIdchapitre($idchapitre)
+    {
+        $this->idchapitre = $idchapitre;
+    }
+
+    /**
      * @var \TestBundle\Entity\Tests
      *
      * @ORM\ManyToOne(targetEntity="TestBundle\Entity\Tests")

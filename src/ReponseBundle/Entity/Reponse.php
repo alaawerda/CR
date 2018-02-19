@@ -13,6 +13,69 @@ use Doctrine\ORM\Mapping as ORM;
 class Reponse
 {
     /**
+     * @return string
+     */
+    public function getReponse()
+    {
+        return $this->reponse;
+    }
+
+    /**
+     * @param string $reponse
+     */
+    public function setReponse($reponse)
+    {
+        $this->reponse = $reponse;
+    }
+
+    /**
+     * @return string
+     */
+    public function getValide()
+    {
+        return $this->valide;
+    }
+
+    /**
+     * @param string $valide
+     */
+    public function setValide($valide)
+    {
+        $this->valide = $valide;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdreponse()
+    {
+        return $this->idreponse;
+    }
+
+    /**
+     * @param int $idreponse
+     */
+    public function setIdreponse($idreponse)
+    {
+        $this->idreponse = $idreponse;
+    }
+
+    /**
+     * @return \QuestionBundle\Entity\Question
+     */
+    public function getIdquestion()
+    {
+        return $this->idquestion;
+    }
+
+    /**
+     * @param \QuestionBundle\Entity\Question $idquestion
+     */
+    public function setIdquestion($idquestion)
+    {
+        $this->idquestion = $idquestion;
+    }
+    /**
      * @var string
      *
      * @ORM\Column(name="reponse", type="string", length=250, nullable=false)
@@ -44,6 +107,14 @@ class Reponse
      * })
      */
     private $idquestion;
+
+
+    public function __toString(){
+        // to show the name of the Category in the select
+        return $this->reponse;
+        // to show the id of the Category in the select
+        // return $this->id;
+    }
 
 
 }

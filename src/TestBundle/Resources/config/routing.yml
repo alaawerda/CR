@@ -1,3 +1,7 @@
+test_tests:
+    resource: "@TestBundle/Resources/config/routing/tests.yml"
+    prefix:   /tests
+
 test_homepage:
     path:     /
     defaults: { _controller: TestBundle:Default:index }

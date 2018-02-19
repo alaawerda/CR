@@ -1,3 +1,7 @@
+question_question:
+    resource: "@QuestionBundle/Resources/config/routing/question.yml"
+    prefix:   /question
+
 question_homepage:
     path:     /
     defaults: { _controller: QuestionBundle:Default:index }

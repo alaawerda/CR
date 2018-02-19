@@ -1,3 +1,7 @@
+reponse_reponse:
+    resource: "@ReponseBundle/Resources/config/routing/reponse.yml"
+    prefix:   /reponse
+
 reponse_homepage:
     path:     /
     defaults: { _controller: ReponseBundle:Default:index }

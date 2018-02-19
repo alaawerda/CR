@@ -112,6 +112,68 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return array (  '_controller' => 'UsertestBundle\\Controller\\DefaultController::indexAction',  '_route' => 'usertest_homepage',);
         }
 
+        if (0 === strpos($pathinfo, '/user')) {
+            // user_index
+            if ('/user' === $trimmedPathinfo) {
+                if ('GET' !== $canonicalMethod) {
+                    $allow[] = 'GET';
+                    goto not_user_index;
+                }
+
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($rawPathinfo.'/', 'user_index');
+                }
+
+                return array (  '_controller' => 'UserBundle\\Controller\\UserController::indexAction',  '_route' => 'user_index',);
+            }
+            not_user_index:
+
+            // user_show
+            if (preg_match('#^/user/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                if ('GET' !== $canonicalMethod) {
+                    $allow[] = 'GET';
+                    goto not_user_show;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_show')), array (  '_controller' => 'UserBundle\\Controller\\UserController::showAction',));
+            }
+            not_user_show:
+
+            // user_new
+            if ('/user/new' === $pathinfo) {
+                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                    $allow = array_merge($allow, array('GET', 'POST'));
+                    goto not_user_new;
+                }
+
+                return array (  '_controller' => 'UserBundle\\Controller\\UserController::newAction',  '_route' => 'user_new',);
+            }
+            not_user_new:
+
+            // user_edit
+            if (preg_match('#^/user/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                    $allow = array_merge($allow, array('GET', 'POST'));
+                    goto not_user_edit;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_edit')), array (  '_controller' => 'UserBundle\\Controller\\UserController::editAction',));
+            }
+            not_user_edit:
+
+            // user_delete
+            if (preg_match('#^/user/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                if ('DELETE' !== $canonicalMethod) {
+                    $allow[] = 'DELETE';
+                    goto not_user_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_delete')), array (  '_controller' => 'UserBundle\\Controller\\UserController::deleteAction',));
+            }
+            not_user_delete:
+
+        }
+
         // user_homepage
         if ('' === $trimmedPathinfo) {
             if (substr($pathinfo, -1) !== '/') {
@@ -119,6 +181,130 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             }
 
             return array (  '_controller' => 'UserBundle\\Controller\\DefaultController::indexAction',  '_route' => 'user_homepage',);
+        }
+
+        if (0 === strpos($pathinfo, '/typepermis')) {
+            // typepermis_index
+            if ('/typepermis' === $trimmedPathinfo) {
+                if ('GET' !== $canonicalMethod) {
+                    $allow[] = 'GET';
+                    goto not_typepermis_index;
+                }
+
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($rawPathinfo.'/', 'typepermis_index');
+                }
+
+                return array (  '_controller' => 'TypepermisBundle\\Controller\\TypepermisController::indexAction',  '_route' => 'typepermis_index',);
+            }
+            not_typepermis_index:
+
+            // typepermis_show
+            if (preg_match('#^/typepermis/(?P<idtype>[^/]++)/show$#s', $pathinfo, $matches)) {
+                if ('GET' !== $canonicalMethod) {
+                    $allow[] = 'GET';
+                    goto not_typepermis_show;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'typepermis_show')), array (  '_controller' => 'TypepermisBundle\\Controller\\TypepermisController::showAction',));
+            }
+            not_typepermis_show:
+
+            // typepermis_new
+            if ('/typepermis/new' === $pathinfo) {
+                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                    $allow = array_merge($allow, array('GET', 'POST'));
+                    goto not_typepermis_new;
+                }
+
+                return array (  '_controller' => 'TypepermisBundle\\Controller\\TypepermisController::newAction',  '_route' => 'typepermis_new',);
+            }
+            not_typepermis_new:
+
+            // typepermis_edit
+            if (preg_match('#^/typepermis/(?P<idtype>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                    $allow = array_merge($allow, array('GET', 'POST'));
+                    goto not_typepermis_edit;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'typepermis_edit')), array (  '_controller' => 'TypepermisBundle\\Controller\\TypepermisController::editAction',));
+            }
+            not_typepermis_edit:
+
+            // typepermis_delete
+            if (preg_match('#^/typepermis/(?P<idtype>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                if ('DELETE' !== $canonicalMethod) {
+                    $allow[] = 'DELETE';
+                    goto not_typepermis_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'typepermis_delete')), array (  '_controller' => 'TypepermisBundle\\Controller\\TypepermisController::deleteAction',));
+            }
+            not_typepermis_delete:
+
+        }
+
+        elseif (0 === strpos($pathinfo, '/tests')) {
+            // tests_index
+            if ('/tests' === $trimmedPathinfo) {
+                if ('GET' !== $canonicalMethod) {
+                    $allow[] = 'GET';
+                    goto not_tests_index;
+                }
+
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($rawPathinfo.'/', 'tests_index');
+                }
+
+                return array (  '_controller' => 'TestBundle\\Controller\\TestsController::indexAction',  '_route' => 'tests_index',);
+            }
+            not_tests_index:
+
+            // tests_show
+            if (preg_match('#^/tests/(?P<idtest>[^/]++)/show$#s', $pathinfo, $matches)) {
+                if ('GET' !== $canonicalMethod) {
+                    $allow[] = 'GET';
+                    goto not_tests_show;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'tests_show')), array (  '_controller' => 'TestBundle\\Controller\\TestsController::showAction',));
+            }
+            not_tests_show:
+
+            // tests_new
+            if ('/tests/new' === $pathinfo) {
+                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                    $allow = array_merge($allow, array('GET', 'POST'));
+                    goto not_tests_new;
+                }
+
+                return array (  '_controller' => 'TestBundle\\Controller\\TestsController::newAction',  '_route' => 'tests_new',);
+            }
+            not_tests_new:
+
+            // tests_edit
+            if (preg_match('#^/tests/(?P<idtest>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                    $allow = array_merge($allow, array('GET', 'POST'));
+                    goto not_tests_edit;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'tests_edit')), array (  '_controller' => 'TestBundle\\Controller\\TestsController::editAction',));
+            }
+            not_tests_edit:
+
+            // tests_delete
+            if (preg_match('#^/tests/(?P<idtest>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                if ('DELETE' !== $canonicalMethod) {
+                    $allow[] = 'DELETE';
+                    goto not_tests_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'tests_delete')), array (  '_controller' => 'TestBundle\\Controller\\TestsController::deleteAction',));
+            }
+            not_tests_delete:
+
         }
 
         // typepermis_homepage
@@ -139,6 +325,68 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return array (  '_controller' => 'TestBundle\\Controller\\DefaultController::indexAction',  '_route' => 'test_homepage',);
         }
 
+        if (0 === strpos($pathinfo, '/reponse')) {
+            // reponse_index
+            if ('/reponse' === $trimmedPathinfo) {
+                if ('GET' !== $canonicalMethod) {
+                    $allow[] = 'GET';
+                    goto not_reponse_index;
+                }
+
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($rawPathinfo.'/', 'reponse_index');
+                }
+
+                return array (  '_controller' => 'ReponseBundle\\Controller\\ReponseController::indexAction',  '_route' => 'reponse_index',);
+            }
+            not_reponse_index:
+
+            // reponse_show
+            if (preg_match('#^/reponse/(?P<idreponse>[^/]++)/show$#s', $pathinfo, $matches)) {
+                if ('GET' !== $canonicalMethod) {
+                    $allow[] = 'GET';
+                    goto not_reponse_show;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'reponse_show')), array (  '_controller' => 'ReponseBundle\\Controller\\ReponseController::showAction',));
+            }
+            not_reponse_show:
+
+            // reponse_new
+            if ('/reponse/new' === $pathinfo) {
+                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                    $allow = array_merge($allow, array('GET', 'POST'));
+                    goto not_reponse_new;
+                }
+
+                return array (  '_controller' => 'ReponseBundle\\Controller\\ReponseController::newAction',  '_route' => 'reponse_new',);
+            }
+            not_reponse_new:
+
+            // reponse_edit
+            if (preg_match('#^/reponse/(?P<idreponse>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                    $allow = array_merge($allow, array('GET', 'POST'));
+                    goto not_reponse_edit;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'reponse_edit')), array (  '_controller' => 'ReponseBundle\\Controller\\ReponseController::editAction',));
+            }
+            not_reponse_edit:
+
+            // reponse_delete
+            if (preg_match('#^/reponse/(?P<idreponse>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                if ('DELETE' !== $canonicalMethod) {
+                    $allow[] = 'DELETE';
+                    goto not_reponse_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'reponse_delete')), array (  '_controller' => 'ReponseBundle\\Controller\\ReponseController::deleteAction',));
+            }
+            not_reponse_delete:
+
+        }
+
         // reponse_homepage
         if ('' === $trimmedPathinfo) {
             if (substr($pathinfo, -1) !== '/') {
@@ -155,6 +403,68 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             }
 
             return array (  '_controller' => 'RdvBundle\\Controller\\DefaultController::indexAction',  '_route' => 'rdv_homepage',);
+        }
+
+        if (0 === strpos($pathinfo, '/question')) {
+            // question_index
+            if ('/question' === $trimmedPathinfo) {
+                if ('GET' !== $canonicalMethod) {
+                    $allow[] = 'GET';
+                    goto not_question_index;
+                }
+
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($rawPathinfo.'/', 'question_index');
+                }
+
+                return array (  '_controller' => 'QuestionBundle\\Controller\\QuestionController::indexAction',  '_route' => 'question_index',);
+            }
+            not_question_index:
+
+            // question_show
+            if (preg_match('#^/question/(?P<idquestion>[^/]++)/show$#s', $pathinfo, $matches)) {
+                if ('GET' !== $canonicalMethod) {
+                    $allow[] = 'GET';
+                    goto not_question_show;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'question_show')), array (  '_controller' => 'QuestionBundle\\Controller\\QuestionController::showAction',));
+            }
+            not_question_show:
+
+            // question_new
+            if ('/question/new' === $pathinfo) {
+                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                    $allow = array_merge($allow, array('GET', 'POST'));
+                    goto not_question_new;
+                }
+
+                return array (  '_controller' => 'QuestionBundle\\Controller\\QuestionController::newAction',  '_route' => 'question_new',);
+            }
+            not_question_new:
+
+            // question_edit
+            if (preg_match('#^/question/(?P<idquestion>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                    $allow = array_merge($allow, array('GET', 'POST'));
+                    goto not_question_edit;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'question_edit')), array (  '_controller' => 'QuestionBundle\\Controller\\QuestionController::editAction',));
+            }
+            not_question_edit:
+
+            // question_delete
+            if (preg_match('#^/question/(?P<idquestion>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                if ('DELETE' !== $canonicalMethod) {
+                    $allow[] = 'DELETE';
+                    goto not_question_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'question_delete')), array (  '_controller' => 'QuestionBundle\\Controller\\QuestionController::deleteAction',));
+            }
+            not_question_delete:
+
         }
 
         // question_homepage
